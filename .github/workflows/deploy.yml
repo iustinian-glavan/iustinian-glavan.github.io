@@ -31,7 +31,7 @@ jobs:
         run: npm run build
 
       - name: Create .nojekyll file
-        run: touch ./dist/.nojekyll
+        run: echo "" > ./dist/.nojekyll
 
       - name: Upload artifact for Pages deployment
         uses: actions/upload-pages-artifact@v1
