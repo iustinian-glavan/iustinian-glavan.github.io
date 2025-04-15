@@ -30,12 +30,16 @@ jobs:
       - name: Build Website
         run: npm run build
 
+      - name: List Build Output
+        run: ls -al dist
+
       - name: Create .nojekyll file
         run: echo "" > ./dist/.nojekyll
 
       - name: Upload artifact for Pages deployment
         uses: actions/upload-pages-artifact@v1
         with:
+          name: pages-artifact
           path: dist/.
 
   deploy:
