@@ -18,6 +18,12 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v3
 
+      - name: Dummy artifact fetch to fix deploy-pages
+        uses: actions/upload-artifact@v3
+        with:
+          name: dummy
+          path: README.md
+
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
@@ -41,10 +47,9 @@ jobs:
       - name: Create .nojekyll file
         run: echo "" > dist/.nojekyll
 
-      - name: Upload artifact for deployment
-        uses: actions/upload-artifact@v4
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v1
         with:
-          name: github-pages
           path: dist
 
   deploy:
@@ -52,11 +57,5 @@ jobs:
     needs: build
 
     steps:
-      - name: Download artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: github-pages
-          path: .
-
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v1
