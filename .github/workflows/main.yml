@@ -3,7 +3,7 @@ name: Deploy Astro site to GitHub Pages
 on:
   push:
     branches:
-      - main  # or master, depending on your default branch
+      - master
 
 permissions:
   contents: write
@@ -33,12 +33,10 @@ jobs:
 
       - name: Deploy to gh-pages branch
         run: |
-          # make a temporary directory
           mkdir temp-deploy
           cp -r dist/* temp-deploy/
           cd temp-deploy
 
-          # initialize a new git repo in the deploy folder
           git init
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
@@ -46,5 +44,4 @@ jobs:
           git add .
           git commit -m "Deploy 🚀"
 
-          # push to gh-pages branch using GITHUB_TOKEN
           git push --force "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git" HEAD:gh-pages
