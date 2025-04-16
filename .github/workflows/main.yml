@@ -40,8 +40,10 @@ jobs:
           git init
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-
           git add .
           git commit -m "Deploy 🚀"
 
           git push --force "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git" HEAD:gh-pages
+
+      - name: Cleanup deployment folder
+        run: rm -rf temp-deploy
