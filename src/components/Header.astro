@@ -1,0 +1,136 @@
+---
+---
+<header>
+  <nav>
+    <div class="menu-toggle" id="mobile-menu">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li class="dropdown">
+        <a href="/about" aria-haspopup="true" aria-expanded="false">About</a>
+        <ul class="dropdown-menu">
+          <li><a href="/about/tech-background">Tech Background</a></li>
+          <li><a href="/about/leadership-journey">Leadership Journey</a></li>
+          <li><a href="/about/core-values">Core Values</a></li>
+        </ul>
+      </li>
+      <li class="dropdown">
+        <a href="/projects" aria-haspopup="true" aria-expanded="false">Projects</a>
+        <ul class="dropdown-menu">
+          <li><a href="/projects/project-alpha">Project Alpha</a></li>
+          <li><a href="/projects/project-beta">Project Beta</a></li>
+          <li><a href="/projects/project-gamma">Project Gamma</a></li>
+        </ul>
+      </li>
+      <li class="dropdown">
+        <a href="/leadership" aria-haspopup="true" aria-expanded="false">Leadership</a>
+        <ul class="dropdown-menu">
+          <li><a href="/leadership/team-building">Team Building</a></li>
+          <li><a href="/leadership/mentorship-stories">Mentorship Stories</a></li>
+          <li><a href="/leadership/management-articles">Management Articles</a></li>
+        </ul>
+      </li>
+      <li class="dropdown">
+        <a href="/blog" aria-haspopup="true" aria-expanded="false">Blog</a>
+        <ul class="dropdown-menu">
+          <li><a href="/blog/engineering">Engineering</a></li>
+          <li><a href="/blog/leadership">Leadership</a></li>
+          <li><a href="/blog/culture">Culture</a></li>
+        </ul>
+      </li>
+      <li><a href="/resume">Resume</a></li>
+      <li><a href="/testimonials">Testimonials</a></li>
+      <li><a href="/contact">Contact</a></li>
+      <li><a href="/newsletter">Newsletter</a></li>
+    </ul>
+  </nav>
+</header>
+
+<style>
+  header {
+    background-color: #333;
+    color: white;
+    padding: 1rem;
+  }
+
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .nav-links {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+  }
+
+  .nav-links li {
+    margin-right: 20px;
+  }
+
+  .nav-links a {
+    color: white;
+    text-decoration: none;
+  }
+
+  .dropdown-menu {
+    display: none;
+    position: absolute;
+    background-color: #444;
+    list-style: none;
+    padding: 10px;
+    margin-top: 5px;
+  }
+
+  .dropdown:hover .dropdown-menu {
+    display: block;
+  }
+
+  .menu-toggle {
+    display: none;
+    cursor: pointer;
+  }
+
+  .bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    margin: 5px 0;
+  }
+
+  @media (max-width: 768px) {
+    .nav-links {
+      display: none;
+      flex-direction: column;
+      width: 100%;
+      text-align: center;
+    }
+
+    .nav-links.active {
+      display: flex;
+    }
+
+    .menu-toggle {
+      display: block;
+    }
+
+    .dropdown-menu {
+        position: static;
+    }
+  }
+</style>
+
+<script>
+  const menuToggle = document.getElementById('mobile-menu');
+  const navLinks = document.querySelector('.nav-links');
+
+  menuToggle?.addEventListener('click', () => {
+    navLinks?.classList.toggle('active');
+  });
+</script>
